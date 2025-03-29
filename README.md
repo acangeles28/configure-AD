@@ -16,7 +16,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 <h2>Operating Systems Used </h2>
 
 - Windows Server 2022
-- Windows 10 (21H2)
+- Windows 10 
 
 <h2>High-Level Deployment and Configuration Objectives</h2>
 
@@ -44,9 +44,9 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 ![ipconfig to static](https://github.com/user-attachments/assets/d57edc04-33e1-474b-af33-90df25440727)
 
-<h2>Step 2: Ensure Connectivity between Client and Domain Controller</h2>
+<p>Step 2: Ensure Connectivity between Client and Domain Controller</p>
 
-  - Login to Client-1 using Remote Desktop and run a continuous ping to DC-1’s private IP address (<code>ping -t &lt;ip_address&gt;</code>).
+  - Login to Client-1 using Remote Desktop and run a continuous ping to DC-1’s private IP address (ping -t &lt;ip_address&gt;).
 
 ![Ping 1](https://github.com/user-attachments/assets/fa6cfb3a-0093-47ef-b5ba-ccf5b36f3ddb)
 
@@ -58,22 +58,31 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 ![ping connectivity 1](https://github.com/user-attachments/assets/465d300d-cda4-490a-b56a-6a7b630177a2)
 
-<h2>Step 3: Install Active Directory</h2>
-<ul>
-  <li>Login to DC-1 and install the <strong>Active Directory Domain Services</strong> (AD DS) role.</li>
-  <li>Promote DC-1 to a Domain Controller and set up a new forest with a domain name (e.g., <code>mydomain.com</code>).</li>
-  <li>Restart DC-1 after promotion and log in using the domain account: <code>mydomain.com\labuser</code>.</li>
-</ul>
+<p>Step 3: Install Active Directory</p>
 
-<h2>Step 4: Create Admin User and Organizational Units (OUs) in Active Directory</h2>
-<ul>
-  <li>In Active Directory Users and Computers (ADUC), create 3 Organizational Units (OU)</li>
-   <li>Create 1st OU named <strong>_EMPLOYEES</strong> for employee users.</li>
-   <li>Create 2nd OU named <strong>_ADMINS</strong> for administrative users.</li>
-   <li>Create 3rd OU named <strong>_CLIENTS</strong> for client.</li>
-  <li>Create a new user named “Jane Doe” with the username <code>jane_admin</code> and add her to the <strong>Domain Admins</strong> security group.</li>
-  <li>Log out and back in to DC-1 as <code>mydomain.com\jane_admin</code> to use this admin account moving forward.</li>
-</ul>
+  - Login to DC-1 and install the Active Directory Domain Services (AD DS) role.
+
+![install AD domain service](https://github.com/user-attachments/assets/544d3270-47d5-4515-967f-8a08559f009a)
+![ad domain service 2](https://github.com/user-attachments/assets/11c5c796-a102-45e4-b1dc-7e3a2a71edb6)
+
+  - Promote DC-1 to a Domain Controller and set up a new forest with a domain name 
+  - Restart DC-1 after promotion and log in using the domain account: myadproject.com\labuser
+
+<p>Step 4: Create Admin User and Organizational Units (OUs) in Active Directory<p/>
+
+  - In Active Directory Users and Computers (ADUC), create 3 Organizational Units (OU)
+  - Create 1st OU named <strong>_EMPLOYEES</strong> for employee users.
+  - Create 2nd OU named <strong>_ADMINS</strong> for administrative users.
+  - Create 3rd OU named <strong>_CLIENTS</strong> for client.
+
+![create org unit 1](https://github.com/user-attachments/assets/e6ec369e-9bed-41b7-a8e1-0e3f02abae60)
+
+  - Create a new user named “Jane Doe” with the username jane_admin and add her to Domain Admins security group.
+
+![new user + add to domain admin](https://github.com/user-attachments/assets/05cc4fad-97a6-43ac-a360-98c9b061f700)
+
+  - Log out and back in to DC-1 as myadproject.com\jane_admin to use this admin account moving forward.
+
 
 <h2>Step 5: Join Client-1 to the Domain</h2>
 <ul>
