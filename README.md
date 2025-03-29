@@ -83,27 +83,32 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
   - Log out and back in to DC-1 as myadproject.com\jane_admin to use this admin account moving forward.
 
+<p>Step 5: Join Client-1 to the Domain<p/>
 
-<h2>Step 5: Join Client-1 to the Domain</h2>
-<ul>
-  <li>In the Azure Portal, set Client-1’s DNS settings to DC-1's Private IP address.</li>
-  <li>Restart Client-1 from the Azure Portal.</li>
-  <li>Login to Client-1 using the local admin account <code>labuser</code>, and join it to the domain <code>mydomain.com</code>.</li>
-  <li>Allow “domain users” access to remote desktop</li>
-  <li>Once joined, restart Client-1 and verify that it appears in ADUC under the <strong>Computers</strong> container.</li>
-  <li>Create an OU called <strong>_CLIENTS</strong> and move Client-1 into this OU for organizational purposes.</li>
-</ul>
+  - In the Azure Portal, set Client-1’s DNS settings to DC-1's Private IP address, then Restart
 
-<h2>Step 6: Create additional user accounts using a Powershell ISE script and verify access.</h2>
-<ul>
-  <li>Log into DC-1 as <code>jane_admin</code> and open PowerShell ISE as an administrator.</li>
-  <li>Use PowerShell to create multiple user accounts in AD, following a scripted process.</li>
-  <li>Once the script completes, check ADUC to ensure the new users are created in the appropriate OU.</li>
-  <li>Attempt to log into Client-1 with one of the newly created users to verify the account works correctly.</li>
-</ul>
+![join client to domain 1](https://github.com/user-attachments/assets/3d0b327d-b3b3-4a7f-85ea-38116d3c5727)
 
-<h2>Conclusion</h2>
-<p>In this tutorial, we successfully deployed and configured an operational Active Directory environment. This involved setting up a Domain Controller and a client machine in Azure, establishing communication between them, and installing Active Directory Domain Services. After creating a new domain, we organized it by adding organizational units and user accounts, including an administrator account, and connected the client to the domain.</p>
+  - Login to Client-1 using the local admin account labuser, and join it to the domain myadproject.com
+  - Allow “domain users” access to remote desktop
+  - Once joined, restart Client-1 and verify that it appears in ADUC under the Computers container.
+  - Create an OU called _CLIENTS and move Client-1 into this OU for organizational purposes.
 
-<p>We also enabled Remote Desktop access for domain users and used a PowerShell script to create additional user accounts. To complete the lab, we tested logging into the client using one of the newly created accounts. This lab provided valuable hands-on experience with key Active Directory setup and configuration tasks.</p>
+![join client to domain](https://github.com/user-attachments/assets/4b997517-d69a-4982-b2ce-356bed71aa5c)
+
+<p>Step 6: Create additional user accounts using a Powershell ISE script and verify access.</p>
+
+  - Log into DC-1 as jane_admin and open PowerShell ISE as an administrator.
+  - Use PowerShell to create multiple user accounts in AD, following a scripted process.
+
+![scipt to create mulitples](https://github.com/user-attachments/assets/db0ac674-7052-46b7-a2ab-7358542028ec)
+
+  - Once the script completes, check ADUC to ensure the new users are created in the appropriate OU.
+
+![script to create muliptles 2](https://github.com/user-attachments/assets/8524c253-75b5-4426-9281-ba028b7651a6)
+
+  - Attempt to log into Client-1 with one of the newly created users to verify the account works correctly
+
+![newly created random user](https://github.com/user-attachments/assets/0a8429e0-9313-4cbe-8bd0-d36065e4fb86)
+
 
