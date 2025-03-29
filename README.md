@@ -18,30 +18,45 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Windows Server 2022
 - Windows 10 (21H2)
 
-<h2>High-Level Deployment and Configuration Steps</h2>
+<h2>High-Level Deployment and Configuration Objectives</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Create Resources
+- Ensure Connectivity between the client and Domain Controller
+- Install Active Directory
+- Create an Admin and Normal User Account in AD
+- Join Client-1 to your domain (myadproject.com)
+- Setup Remote Desktop for non-administrative users on Client-1
+- Create additional users and attempt to log into client-1 with one of the users
 
 <h2>Deployment and Configuration Steps</h2>
 
-<h2>Step 1: Setup Resources in Azure</h2>
-<ul>
-  <li>Create the Domain Controller VM (Windows Server 2022) named “DC-1”.</li>
-  <li>Take note of the Resource Group and Virtual Network (Vnet) created for the Domain Controller.</li>
-  <li>Set DC-1's NIC Private IP address to static to ensure consistent network connectivity.</li>
-  <li>Create the Client VM (Windows 10) named “Client-1” in the same Resource Group and Vnet as DC-1.</li>
-  <li>Ensure both VMs (DC-1 and Client-1) are in the same Vnet. You can verify this with Azure's Network Watcher topology tool.</li>
-</ul>
+<p>Step 1: Setup Resources in Azure<p/>
+  
+  - Create a Resource Group, Virtual Network, and the Domain Controller VM (Windows Server 2022) named “DC-1”.
+
+![create rg](https://github.com/user-attachments/assets/7f785de3-545f-4d82-8869-a412db4ba630)
+
+  - Create Client VM (Windows 10) named “Client-1” in the same Resource Group and Vnet as DC-1.
+
+![create vm](https://github.com/user-attachments/assets/c99d563d-cbcb-4bdf-8ae1-d399ab1e36f0)
+
+- Set DC-1's NIC Private IP address to static to ensure consistent network connectivity.
+
+![ipconfig to static](https://github.com/user-attachments/assets/d57edc04-33e1-474b-af33-90df25440727)
 
 <h2>Step 2: Ensure Connectivity between Client and Domain Controller</h2>
-<ul>
-  <li>Login to Client-1 using Remote Desktop and run a continuous ping to DC-1’s private IP address (<code>ping -t &lt;ip_address&gt;</code>).</li>
-  <li>Login to DC-1 and enable ICMPv4 (ping) in the local Windows Firewall settings.</li>
-  <li>Check Client-1 to confirm that the ping now succeeds, ensuring connectivity between the Client and Domain Controller.</li>
-</ul>
+
+  - Login to Client-1 using Remote Desktop and run a continuous ping to DC-1’s private IP address (<code>ping -t &lt;ip_address&gt;</code>).
+
+![Ping 1](https://github.com/user-attachments/assets/fa6cfb3a-0093-47ef-b5ba-ccf5b36f3ddb)
+
+  - Login to DC-1 and enable ICMPv4 (ping) in the local Windows Firewall settings.
+
+![enable icmpv4](https://github.com/user-attachments/assets/1f008a84-3944-4c26-a5a1-d787dcf9f601)
+
+  - Check Client-1 to confirm that the ping now succeeds, ensuring connectivity between the Client and Domain Controller
+
+![ping connectivity 1](https://github.com/user-attachments/assets/465d300d-cda4-490a-b56a-6a7b630177a2)
 
 <h2>Step 3: Install Active Directory</h2>
 <ul>
