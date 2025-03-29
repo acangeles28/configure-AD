@@ -32,7 +32,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 
 <p>Step 1: Setup Resources in Azure<p/>
   
-  - Create a Resource Group, Virtual Network, and the Domain Controller VM (Windows Server 2022) named “DC-1”.
+  - Create a Resource Group (RG-AD), a Virtual Network, and the Domain Controller VM (Windows Server 2022) named “DC-1”.
 
 ![create rg](https://github.com/user-attachments/assets/7f785de3-545f-4d82-8869-a412db4ba630)
 
